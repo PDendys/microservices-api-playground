@@ -1,5 +1,6 @@
-import { Controller, Get, Query } from '@nestjs/common';
+import { Controller, Get, Param } from '@nestjs/common';
 import { AppService } from './app.service';
+import { PaginationParams } from './common/decorators/pagination.decorator';
 
 @Controller()
 export class AppController {
@@ -7,21 +8,18 @@ export class AppController {
 
   @Get()
   getHello(): string {
+    console.log('lorem');
     return this.appService.getHello();
   }
 
-  @Get('event-pattern')
-  handleTest(): void {
-    return this.appService.testEventPattern();
-  }
-
-  @Get('message-pattern')
-  handleMessage(): any {
-    return this.appService.testMessagePattern();
-  }
-
   @Get('category')
-  getCategory(@Query() params): any {
+  getCategory(@PaginationParams() params): any {
     return this.appService.getCategories(params);
+  }
+
+  @Get('/:id')
+  getCategoryById(@Param() params) {
+    const { id } = params;
+    return this.appService.getCategoryById(id);
   }
 }
