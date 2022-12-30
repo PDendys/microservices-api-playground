@@ -1,4 +1,5 @@
 import { Controller, Get, Post, Param, Body } from '@nestjs/common';
+import { MessagePattern } from '@nestjs/microservices';
 import { CategoriesService } from './categories.service';
 import { CreateCategoryDto } from './dto/categories.dto';
 import { PaginationParams } from '../common/decorators/pagination.decorator';
@@ -24,5 +25,13 @@ export class CategoriesController {
   @Post()
   create(@Body() createCategoryDto: CreateCategoryDto) {
     return this.categoriesService.createCategory(createCategoryDto);
+  }
+
+  @MessagePattern('ENTITIES.CATEGORY.GET')
+  handleMessage(params) {
+    console.log('params', params);
+    return this.categoriesService.getCategories(0, 2);
+    // console.log('SAMPLE_MESSAGE', data);
+    // return { success: true };
   }
 }
