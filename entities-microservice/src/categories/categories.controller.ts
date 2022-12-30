@@ -35,6 +35,6 @@ export class CategoriesController {
   @MessagePattern('ENTITIES.CATEGORY_BY_ID.GET')
   getCategoryById(data) {
     const { id } = data;
-    return this.categoriesService.getCategoryById(id);
+    return this.categoriesService.getCategoryById(Number(id));
   }
 }
