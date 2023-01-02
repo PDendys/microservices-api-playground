@@ -7,22 +7,8 @@ import { CreateCategoryDto } from './dto/categories.dto';
 export class CategoriesController {
   constructor(private readonly categoriesService: CategoriesService) {}
 
-  // @Get()
-  // getAllCategories(
-  //   @PaginationParams() params: { skip?: number; take?: number },
-  // ) {
-  //   const { skip, take } = params;
-  //   return this.categoriesService.getCategories(skip, take);
-  // }
-
-  // @Get('/:id')
-  // getCategoryById(@Param() params) {
-  //   const { id } = params;
-  //   return this.categoriesService.getCategoryById(id);
-  // }
-
-  @Post()
-  create(@Body() createCategoryDto: CreateCategoryDto) {
+  @MessagePattern('ENTITIES.CREATE_CATEGORY.POST')
+  createCategory(@Body() createCategoryDto: CreateCategoryDto) {
     return this.categoriesService.createCategory(createCategoryDto);
   }
 
