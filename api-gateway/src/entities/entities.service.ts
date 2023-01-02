@@ -16,8 +16,8 @@ export class EntitiesService {
   }
 
   async onModuleInit() {
-    this.entitiesClient.subscribeToResponseOf('ENTITIES.CATEGORY.GET');
-    this.entitiesClient.subscribeToResponseOf('ENTITIES.CATEGORY_BY_ID.GET');
-    await this.entitiesClient.connect();
+    // this.entitiesClient.subscribeToResponseOf('ENTITIES.CATEGORY.GET');
+    // this.entitiesClient.subscribeToResponseOf('ENTITIES.CATEGORY_BY_ID.GET');
+    // await this.entitiesClient.connect();
   }
 }
