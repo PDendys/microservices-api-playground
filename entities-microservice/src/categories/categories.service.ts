@@ -41,10 +41,9 @@ export class CategoriesService {
    *
    * @param id
    */
-  getCategoryById(id: string): Promise<CategoryModel | null> {
+  getCategoryById(id: number): Promise<CategoryModel | null> {
     return this.prismaService.category.findUnique({
-      // where: { id: Number(id) },
-      where: { id: 1 },
+      where: { id },
     });
   }
 }
