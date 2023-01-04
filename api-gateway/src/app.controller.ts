@@ -1,4 +1,4 @@
-import { Controller, Get, Param } from '@nestjs/common';
+import { Controller, Get, Param, Post, Query } from '@nestjs/common';
 import { AppService } from './app.service';
 import { PaginationParams } from './common/decorators/pagination.decorator';
 
@@ -20,5 +20,10 @@ export class AppController {
   getCategoryById(@Param() params) {
     const { id } = params;
     return this.appService.getCategoryById(id);
+  }
+
+  @Post('category')
+  createCategory(@Query() params): any {
+    return this.appService.createCategory(params);
   }
 }
