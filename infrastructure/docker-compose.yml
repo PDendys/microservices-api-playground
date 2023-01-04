@@ -1,5 +1,9 @@
 version: "3.8"
 services:
+  rabbitmq:
+    image: rabbitmq
+    ports:
+      - "5672:5672"
   postgres:
     image: postgres:14
     ports:
@@ -11,8 +15,3 @@ services:
       interval: 5s
       timeout: 5s
       retries: 20
-
-  rabbitmq:
-    image: rabbitmq
-    ports:
-      - "5672:5672"
