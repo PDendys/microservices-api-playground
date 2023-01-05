@@ -17,21 +17,17 @@ import { ClientsModule, Transport } from '@nestjs/microservices';
           },
         },
       },
-      // ClientsModule.register([
-      //   {
-      //     name: 'ENTITIES_SERVICE',
-      //     transport: Transport.KAFKA,
-      //     options: {
-      //       client: {
-      //         clientId: 'entities',
-      //         brokers: ['localhost:9092'],
-      //       },
-      //       consumer: {
-      //         groupId: 'entities-consumer',
-      //       },
-      //     },
-      //   },
-      // ]),
+      {
+        name: 'LOGGER_SERVICE',
+        transport: Transport.RMQ,
+        options: {
+          urls: ['amqp://localhost:5672'],
+          queue: 'logger_queue',
+          queueOptions: {
+            durable: false,
+          },
+        },
+      },
     ]),
   ],
   controllers: [EntitiesController],
