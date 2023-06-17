@@ -7,7 +7,7 @@ import { CreateCategoryDto } from './dto/categories.dto';
 export class CategoriesController {
   constructor(private readonly categoriesService: CategoriesService) {}
 
-  @MessagePattern('ENTITIES.CREATE_CATEGORY.POST')
+  @MessagePattern('ENTITIES.CATEGORY.CREATE')
   createCategory(@Body() createCategoryDto: CreateCategoryDto) {
     return this.categoriesService.createCategory(createCategoryDto);
   }
@@ -18,7 +18,7 @@ export class CategoriesController {
     return this.categoriesService.getCategories(skip, take);
   }
 
-  @MessagePattern('ENTITIES.CATEGORY_BY_ID.GET')
+  @MessagePattern('ENTITIES.CATEGORY.GET_BY_ID')
   getCategoryById(data) {
     const { id } = data;
     return this.categoriesService.getCategoryById(Number(id));

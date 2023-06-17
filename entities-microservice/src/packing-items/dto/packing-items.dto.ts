@@ -1,6 +1,6 @@
 import { ApiProperty } from '@nestjs/swagger';
 
-export class CreateCategoryDto {
+export class CreatePackingItemDto {
   @ApiProperty({ default: true })
   id: number;
 
@@ -11,5 +11,5 @@ export class CreateCategoryDto {
   name: string;
 
   @ApiProperty()
-  categoryId: number;
+  category: number;
 }
